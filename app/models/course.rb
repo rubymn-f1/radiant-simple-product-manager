@@ -3,6 +3,11 @@ class Course < ActiveRecord::Base
   
   validates_presence_of :title
   validates_numericality_of :capacity, :price
-  validates_inclusion_of :capacity, :in => 1..999
+
+  def validate
+    errors.add(:price, "should be a positive value") if price.nil? || price < 0.01
+    errors.add(:capacity, "should be a positive value") if capacity.nil? || capacity < 0.01
+  end
+  
   
 end
