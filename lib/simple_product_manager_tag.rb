@@ -3,6 +3,7 @@ module SimpleProductManagerTag
   include ERB::Util
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::UrlHelper
+  require 'app/models/order'
 
   tag 'products' do |tag|
     tag.expand
@@ -241,6 +242,6 @@ module SimpleProductManagerTag
     attr = tag.attr.symbolize_keys
     product = tag.locals.product
     url=attr[:callback_url]
-    link_to 'Buy this with PayPal', product.paypal_url(url)
+    link_to 'Buy this with PayPal', Order.paypal_url(product, url)
   end
 end
