@@ -25,7 +25,7 @@
     </tbody>
 
   </table>
-  <p><%= link_to image("simple_product_manager/new-category", :alt => "New Category"), {:controller=> :category, :action => :new} %></p>
+  <p><%= link_to "Add Category", {:controller=> :category, :action => :new} %></p>
 
 <% if Category.count > 0 then %>
   <h1>Products</h1>
@@ -60,7 +60,7 @@
       <% end %>
     </tbody>
 	</table>
-	  <p><%= link_to image("simple_product_manager/new-product", :alt => "New product"), {:action => :new} %></p>
+	  <p><%= link_to "Add Product", {:action => :new} %></p>
 	
 	<h1>Courses</h1>
 	<table cellspacing="0" cellpadding="0" border="0" class="index" id="courses">
@@ -89,12 +89,12 @@
             <%= product.capacity %>
           </td>
           <td class="remove">
-            <%= link_to image('remove', :alt => 'Remove product'), course_remove_url(:id => product.id) %>
+            <%= link_to image('remove', :alt => 'Remove course'), course_remove_url(:id => product.id) %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-<p><%= link_to image("simple_product_manager/new-product", :alt => "New course"), {:controller => :course, :action => :new} %></p>
+<p><%= link_to "Add Course", {:controller => :course, :action => :new} %></p>
 
 <% end %>
