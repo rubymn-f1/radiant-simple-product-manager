@@ -242,6 +242,6 @@ module SimpleProductManagerTag
     attr = tag.attr.symbolize_keys
     product = tag.locals.product
     url=attr[:callback_url]
-    link_to 'Buy this with PayPal', Order.paypal_url(product, url)
+    link_to 'Buy this with PayPal', Order.paypal_url(product, payment_notification_url)
   end
 end

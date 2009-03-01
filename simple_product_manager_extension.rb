@@ -26,7 +26,8 @@ class SimpleProductManagerExtension < Radiant::Extension
     	category.category_edit   'admin/category/edit/:id',   :action => 'edit'
     	category.category_remove 'admin/category/remove/:id', :action => 'remove'
   	end
-
+  	
+  	map.payment_notification 'payment_notifications', :controller => 'payment_notifications', :action => 'create', :method => :post
   end
   
   def activate
