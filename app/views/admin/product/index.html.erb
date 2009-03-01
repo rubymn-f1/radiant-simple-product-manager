@@ -25,7 +25,7 @@
     </tbody>
 
   </table>
-  <p><%= link_to image("simple_product_manager/new-category", :alt => "New Category"), {:controller => 'admin/category', :action => :new} %></p>
+  <p><%= link_to image("simple_product_manager/new-category", :alt => "New Category"), {:action => :new} %></p>
 
 <% if Category.count > 0 then %>
   <h1>Products</h1>
@@ -43,6 +43,7 @@
     </thead>
 
     <tbody>
+	
       <% Product.find(:all).each do |product| %>
         <tr class="node level-1">
           <td class="product">
@@ -58,8 +59,42 @@
         </tr>
       <% end %>
     </tbody>
+	</table>
+	  <p><%= link_to image("simple_product_manager/new-product", :alt => "New product"), {:action => :new} %></p>
+	
+	<h1>Courses</h1>
+	<table cellspacing="0" cellpadding="0" border="0" class="index" id="courses">
 
+    <thead>
+      <tr>
+        <th class="product">Course Name</th>
+        <th class="category">Category</th>
+        <th class="category">Capacity</th>
+        <th class="modify">Modify</th>
+      </tr>
+    </thead>
+
+	<tbody>
+      <% Course.find(:all).each do |product| %>
+        <tr class="node level-1">
+          <td class="course">
+            <%# image('products/product') %>
+            <%= link_to product.title, course_edit_url(:id => product.id) %>
+          </td>
+          <td class="category">
+          	<%= link_to product.category.title, category_edit_url(:id => product.category.id) %>
+          </td>
+          <td class="capacity">
+            <%# image('products/product') %>
+            <%= product.capacity %>
+          </td>
+          <td class="remove">
+            <%= link_to image('remove', :alt => 'Remove product'), course_remove_url(:id => product.id) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
+<p><%= link_to image("simple_product_manager/new-product", :alt => "New course"), {:controller => :course, :action => :new} %></p>
 
-  <p><%= link_to image("simple_product_manager/new-product", :alt => "New product"), {:action => :new} %></p>
 <% end %>

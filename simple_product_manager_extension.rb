@@ -14,6 +14,12 @@ class SimpleProductManagerExtension < Radiant::Extension
     	product.product_edit   'admin/product/edit/:id',   :action => 'edit'
     	product.product_remove 'admin/product/remove/:id', :action => 'remove'
   	end
+  	map.with_options(:controller => 'admin/course') do |course|
+    	course.course_index  'admin/course',            :action => 'index'
+    	course.course_new    'admin/course/new',        :action => 'new'
+    	course.course_edit   'admin/course/edit/:id',   :action => 'edit'
+    	course.course_remove 'admin/course/remove/:id', :action => 'remove'
+  	end
     map.with_options(:controller => 'admin/category') do |category|
     	category.category_index  'admin/category',            :action => 'index'
     	category.category_new    'admin/category/new',        :action => 'new'
