@@ -2,6 +2,7 @@ module SimpleProductManagerTag
   include Radiant::Taggable
   include ERB::Util
   include ActionView::Helpers::NumberHelper
+  include ActionView::Helpers::UrlHelper
 
   tag 'products' do |tag|
     tag.expand
@@ -235,5 +236,11 @@ module SimpleProductManagerTag
   	course.photo
   end
   
-  
+  desc "Renders a paypal URL for a product and takes a callback URL"
+  tag 'product:paypal_url' do |tag|
+    attr = tag.attr.symbolize_keys
+    product = tag.locals.product
+    url=attr[:callback_url]
+    link_to 'Buy this with PayPal', product.paypal_url(url)
+  end
 end
