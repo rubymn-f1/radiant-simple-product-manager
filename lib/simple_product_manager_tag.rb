@@ -242,6 +242,6 @@ module SimpleProductManagerTag
     attr = tag.attr.symbolize_keys
     product = tag.locals.product
     url=attr[:callback_url]
-    Order.paypal_url(product, payment_notification_url)
+    Order.paypal_url(product, "http://f1.ruby.dev")
   end
 end
