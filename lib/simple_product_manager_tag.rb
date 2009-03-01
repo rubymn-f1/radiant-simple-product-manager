@@ -244,4 +244,12 @@ module SimpleProductManagerTag
     url=attr[:callback_url]
     Order.paypal_url(product, "http://f1.ruby.dev")
   end
+  
+  desc "Renders a paypal URL for a course and takes a callback URL"
+  tag 'course:paypal_url' do |tag|
+    attr = tag.attr.symbolize_keys
+    course = tag.locals.course
+    url=attr[:callback_url]
+    Order.paypal_url(course, "http://f1.ruby.dev")
+  end
 end
